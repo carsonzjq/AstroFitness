@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: rrosa
 Build-Jdk: 1.8.0_144
-=======
-Built-By: JIAQI ZHANG
-Build-Jdk: 1.8.0_60
->>>>>>> 8e2caa9abfa871a93f28b6cdc143cb702fd2b41b
 Created-By: Maven Integration for Eclipse
 
