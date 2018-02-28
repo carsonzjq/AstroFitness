@@ -4,4 +4,12 @@
   <artifactId>AstroFitness</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+  
+<dependencies>
+	<dependency>
+    	<groupId>org.seleniumhq.selenium</groupId>
+    	<artifactId>selenium-java</artifactId>
+    	<version>3.9.1</version>
+	</dependency>
+</dependencies>
 </project>
