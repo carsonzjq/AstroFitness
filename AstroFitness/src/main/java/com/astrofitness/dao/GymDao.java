@@ -12,62 +12,16 @@ import com.astrofitness.bean.Gym;
 import com.astrofitness.bean.Trainer;
 import com.astrofitness.util.HibernateUtil;
 
-public class TrainerDao {
+public class GymDao {
 	
-	public Gym getHomeGym(Integer inte) {
-		Gym gym = null;
-		Session session = HibernateUtil.getSession();
-		Transaction tx = null;
-		
-		try{
-			
-			tx = session.beginTransaction();
-
-			gym = (Gym) session.createCriteria(Gym.class)
-					.add(Restrictions.idEq(inte));
-			
-		}catch(HibernateException e){
-			if(tx!=null){
-				tx.rollback();
-			}
-			e.printStackTrace();
-		}finally{
-			session.close();
-		}
-		return gym;
-	}
-	
-	public Trainer getTrainerByName(String trainer_name) {
-		Trainer trainer = new Trainer();
-		Session session = HibernateUtil.getSession();
-		Transaction tx = null;
-		
-		try{
-			
-			tx = session.beginTransaction();
-
-			trainer = (Trainer) session.get(Trainer.class, trainer_name);
-			
-		}catch(HibernateException e){
-			if(tx!=null){
-				tx.rollback();
-			}
-			e.printStackTrace();
-		}finally{
-			session.close();
-		}
-		return trainer;		
-	}
-
-	public Integer insertTrainer(Trainer trainer){
-
+	public Integer insertGym(Gym gym) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		Integer tid = null;
 		
 		try{
 			tx = session.beginTransaction();
-			tid = (Integer)session.save(trainer);
+			tid = (Integer)session.save(gym);
 			tx.commit();
 			
 		}catch(HibernateException e){
@@ -77,11 +31,33 @@ public class TrainerDao {
 			e.printStackTrace();
 		}finally{
 			session.close();
-		}
-		
+		}		
 		return tid;
-	}
+	}	
 	
+	public List<Trainer> getAllTrainersFromGym(Gym gym) {
+		List<Trainer> trainers = new ArrayList<Trainer>();
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		
+		try{
+			
+			tx = session.beginTransaction();
 
+			trainers = session.createQuery("FROM Trainer WHERE TRAINER_HOME = :gymId")
+					.setParameter("gymId", gym.getId())
+					.list();
+
+			
+		}catch(HibernateException e){
+			if(tx!=null){
+				tx.rollback();
+			}
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return trainers;
+	}
 	
 }
