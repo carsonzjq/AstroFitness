@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration> <!-- ROOT TAG -->
+	<session-factory>
+				
+		<!-- Shows SQL queries that hibernate is using behind the scenes for us to see -->
+		<property name="show_sql">true</property>
+		<!-- hibernate mapping to data definition language -->
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		<!-- There are 4 different states you can place it as:
+			update: perform hibernate actions on an existing database 
+			create: wipe any existing database tables, and create them from scratch as needed
+			validate: creates the schema, destroying old data
+			create-drop: database is cleared and emptied upon server shutdown-->
+			
+		<mapping class="com.astrofitness.bean.Trainer"/>
+		<mapping class="com.astrofitness.bean.Gym"/>
+		<mapping class="com.astrofitness.bean.Client"/>
+	
+	</session-factory>
+</hibernate-configuration>
