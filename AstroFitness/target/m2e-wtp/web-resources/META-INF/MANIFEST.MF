@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: kamel
 Build-Jdk: 1.8.0_162
-=======
-Built-By: Petar
-Build-Jdk: 1.8.0_161
->>>>>>> d9b94771f2933454b25f55829893f177e15c3e7e
 Created-By: Maven Integration for Eclipse
 

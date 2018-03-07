@@ -9,5 +9,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
+  <servlet>
+    <description></description>
+    <display-name>Authenticate</display-name>
+    <servlet-name>Authenticate</servlet-name>
+    <servlet-class>com.astroFitness.servlts.Authenticate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Authenticate</servlet-name>
+    <url-pattern>/Authenticate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Authenticat</display-name>
+    <servlet-name>Authenticat</servlet-name>
+    <servlet-class>servlets.Authenticate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Authenticat</servlet-name>
+    <url-pattern>/Authenticat</url-pattern>
+  </servlet-mapping>
 </web-app>
