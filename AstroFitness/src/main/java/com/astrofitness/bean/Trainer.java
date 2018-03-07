@@ -16,7 +16,7 @@ public class Trainer {
 	@Column
 	@SequenceGenerator(sequenceName="TRAINER_SEQ", name="TRAINER_SEQ")
 	@GeneratedValue(generator="TRAINER_SEQ", strategy=GenerationType.SEQUENCE)
-	private int id;
+	private int trainer_id;
 	@Column
 	private String name;
 	@Column
@@ -24,13 +24,16 @@ public class Trainer {
 	@Column
 	private String password;
 	
-//	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-//	@JoinColumn(name="TRAINER")
-//	@Column
-//	private Gym home_gym;
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="TRAINER_HOME")
+	private Gym home_gym;
 	
 	public Trainer() {
 		super();
+	}
+	public Trainer(Gym home_gym) {
+		super();
+		this.home_gym = home_gym;
 	}
 	public Trainer(String name, String email, String password) {
 		super();
@@ -38,12 +41,20 @@ public class Trainer {
 		this.email = email;
 		this.password = password;
 	}
-	public Trainer(String name, String email, String password, int id) {
+	public Trainer(String name, String email, String password, int trainer_id) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.id = id;
+		this.trainer_id = trainer_id;
+	}
+	
+	public Trainer(String name, String email, String password, Gym home_gym) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.home_gym = home_gym;
 	}
 	public String getName() {
 		return name;
@@ -64,10 +75,16 @@ public class Trainer {
 		this.password = password;
 	}
 	public int getId() {
-		return id;
+		return trainer_id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int trainer_id) {
+		this.trainer_id = trainer_id;
 	}
-
+	public Gym getHome_gym() {
+		return home_gym;
+	}
+	public void setHome_gym(Gym home_gym) {
+		this.home_gym = home_gym;
+	}
+	
 }
