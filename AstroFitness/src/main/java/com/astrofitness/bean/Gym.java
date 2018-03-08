@@ -26,6 +26,7 @@ public class Gym {
 	private String address;
 	@OneToMany(mappedBy="home_gym", fetch=FetchType.EAGER)
 	private List<Trainer> trainers;
+
 	@OneToMany(mappedBy="client_gym", fetch=FetchType.EAGER)
 	private List<Client> clients;
 	
@@ -74,6 +75,13 @@ public class Gym {
 	public void setTrainers(List<Trainer> trainers) {
 		this.trainers = trainers;
 	}
+	public List<Client> getClients() {
+		return clients;
+	}
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

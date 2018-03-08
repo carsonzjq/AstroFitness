@@ -75,6 +75,7 @@ public class GymDao {
 			
 			for(Gym g: gyms){
 				g.setTrainers(null);
+				g.setClients(null);
 			}
 
 			

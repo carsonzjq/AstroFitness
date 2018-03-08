@@ -72,12 +72,12 @@ public class Client {
 		this.address = address;
 	}
 
-	public int getId() {
+	public int getClient_id() {
 		return client_id;
 	}
 
-	public void setId(int id) {
-		this.client_id = id;
+	public void setClient_id(int client_id) {
+		this.client_id = client_id;
 	}
 
 	public String getFname() {
@@ -112,20 +112,20 @@ public class Client {
 		this.password = password;
 	}
 
-	public Gym getHome_gyms() {
+	public Gym getClient_gym() {
 		return client_gym;
 	}
 
-	public void setHome_gyms(Gym home_gyms) {
-		this.client_gym = home_gyms;
+	public void setClient_gym(Gym client_gym) {
+		this.client_gym = client_gym;
 	}
 
 	@Override
 	public String toString() {
 		return "Client [client_id=" + client_id + ", fname=" + fname
 				+ ", lname=" + lname + ", address=" + address + ", email="
-				+ email + ", password=" + password + "]";
+				+ email + ", password=" + password + ", client_gym="
+				+ client_gym + "]";
 	}
 
-	
 }

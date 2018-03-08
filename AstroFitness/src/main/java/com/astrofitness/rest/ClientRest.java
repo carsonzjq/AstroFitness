@@ -22,6 +22,7 @@ public class ClientRest {
 	@Path("/post/newClient")
 	public String insertClient(Client client){
 		System.out.println(client);
+		
 		ClientDao dao = new ClientDao();
 		dao.insertClient(client);
 		return "Success";
