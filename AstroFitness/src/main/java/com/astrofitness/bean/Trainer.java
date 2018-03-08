@@ -39,30 +39,28 @@ public class Trainer {
 	public Trainer() {
 		super();
 	}
-	public Trainer(Gym home_gym) {
+
+	public Trainer(String fname, String lname, String address, String email, String password,
+			Gym home_gym) {
 		super();
+		this.fname = fname;
+		this.lname = lname;
+		this.address = address;
+		this.email = email;
+		this.password = password;
 		this.home_gym = home_gym;
-	}
-	
-	
-	public Trainer(int trainer_id, String firstname, String lastname,
-			String email, String address, String password) {
+	}	
+		
+	public Trainer(int trainer_id, String fname, String lname, String address, String email, String password,
+			Gym home_gym) {
 		super();
 		this.trainer_id = trainer_id;
-		this.fname = firstname;
-		this.lname = lastname;
-		this.email = email;
+		this.fname = fname;
+		this.lname = lname;
 		this.address = address;
-		this.password = password;
-	}
-	public Trainer(String firstname, String lastname, String email,
-			String address, String password) {
-		super();
-		this.fname = firstname;
-		this.lname = lastname;
 		this.email = email;
-		this.address = address;
 		this.password = password;
+		this.home_gym = home_gym;
 	}
 	public int getTrainer_id() {
 		return trainer_id;
@@ -70,17 +68,18 @@ public class Trainer {
 	public void setTrainer_id(int trainer_id) {
 		this.trainer_id = trainer_id;
 	}
-	public String getFirstname() {
+	public String getFname() {
 		return fname;
 	}
-	public void setFirstname(String firstname) {
-		this.fname = firstname;
+	public void setFname(String fname) {
+		this.fname = fname;
 	}
-	public String getLastname() {
+	public String getLname() {
 		return lname;
 	}
-	public void setLastname(String lastname) {
-		this.lname = lastname;
+	public void setLname(String lname) {
+		this.lname = lname;
+
 	}
 	public String getAddress() {
 		return address;
@@ -113,6 +112,8 @@ public class Trainer {
 				+ address + ", password=" + password + ", home_gym=" + home_gym
 				+ "]";
 	}
+	
+	
 	
 	
 }

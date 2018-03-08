@@ -3,19 +3,18 @@
 <hibernate-configuration> <!-- ROOT TAG -->
 	<session-factory>
 				
-		<!-- Shows SQL queries that hibernate is using behind the scenes for us to see -->
-		<property name="show_sql">true</property>
-		<!-- hibernate mapping to data definition language -->
-		<property name="hibernate.hbm2ddl.auto">update</property>
 		<!-- There are 4 different states you can place it as:
 			update: perform hibernate actions on an existing database 
 			create: wipe any existing database tables, and create them from scratch as needed
 			validate: creates the schema, destroying old data
 			create-drop: database is cleared and emptied upon server shutdown-->
+		<property name="hibernate.hbm2ddl.auto">update</property>
 			
 		<mapping class="com.astrofitness.bean.Trainer"/>
 		<mapping class="com.astrofitness.bean.Gym"/>
-	<!-- 	<mapping class="com.astrofitness.bean.Client"/> -->
+	 	<mapping class="com.astrofitness.bean.Client"/> 
+	 	<mapping class="com.astrofitness.bean.Forum"/>
+	 	
 	
 	</session-factory>
 </hibernate-configuration>
