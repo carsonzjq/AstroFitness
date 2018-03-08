@@ -24,59 +24,66 @@ public class Client {
 	@GeneratedValue(generator="CLIENT_SEQ", strategy=GenerationType.SEQUENCE)
 	private int client_id;
 	@Column
-	private String name;
+	private String fname;
+	@Column
+	private String lname;
+	@Column
+	private String address;
 	@Column
 	private String email;
 	@Column
 	private String password;
 	
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="Gym", 
-				joinColumns=@JoinColumn(name="CLIENT_ID"), //reference id of class we are in
-				inverseJoinColumns=@JoinColumn(name="GYM_ID"))
-	private Set<Gym> home_gyms;
+//	@ManyToMany(fetch=FetchType.EAGER)
+//	@JoinTable(name="Gym", 
+//				joinColumns=@JoinColumn(name="CLIENTID"), //reference id of class we are in
+//				inverseJoinColumns=@JoinColumn(name="GYM_ID"))
+//	private Set<Gym> home_gyms;
 	
 	public Client() {
 		super();
 	}
-	public Client(String name, String email, String password) {
+
+	public Client(int client_id, String fname, String lname, String address, String email, String password) {
 		super();
-		this.name = name;
+		this.client_id = client_id;
+		this.fname = fname;
+		this.lname = lname;
+		this.address = address;
 		this.email = email;
 		this.password = password;
-		
-	}
-	public Client(String name, String email, String password, Set<Gym> home_gyms) {
-		super();
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.home_gyms = home_gyms;
 	}
 
-	public Client(int id, String name, String email, String password, Set<Gym> home_gyms) {
-		super();
-		this.client_id = id;
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.home_gyms = home_gyms;
-	}
-
-	public int getId() {
+	public int getClient_id() {
 		return client_id;
 	}
 
-	public void setId(int id) {
-		this.client_id = id;
+	public void setClient_id(int client_id) {
+		this.client_id = client_id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFname() {
+		return fname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
+	public String getLname() {
+		return lname;
+	}
+
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getEmail() {
@@ -95,13 +102,12 @@ public class Client {
 		this.password = password;
 	}
 
-	public Set<Gym> getHome_gyms() {
-		return home_gyms;
+
+	@Override
+	public String toString() {
+		return "Client [client_id=" + client_id + ", fname=" + fname + ", lname=" + lname + ", address=" + address
+				+ ", email=" + email + ", password=" + password + ", home_gyms=" + "]";
 	}
 
-	public void setHome_gyms(Set<Gym> home_gyms) {
-		this.home_gyms = home_gyms;
-	}
-	
 	
 }

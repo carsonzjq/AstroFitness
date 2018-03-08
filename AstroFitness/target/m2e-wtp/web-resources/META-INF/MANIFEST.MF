@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: kamel
 Build-Jdk: 1.8.0_162
+=======
+Built-By: JIAQI ZHANG
+Build-Jdk: 1.8.0_60
+>>>>>>> 4cf41d6204feee4095195b6b4bf609e999d33641
 Created-By: Maven Integration for Eclipse
 
