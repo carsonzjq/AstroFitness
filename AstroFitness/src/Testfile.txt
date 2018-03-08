@@ -1,1 +1,0 @@
-Test # 3. Pushing from local branch to master branch.
