@@ -22,9 +22,13 @@ public class Trainer {
 	@GeneratedValue(generator="TRAINER_SEQ", strategy=GenerationType.SEQUENCE)
 	private int trainer_id;
 	@Column
-	private String name;
+	private String fname;
+	@Column
+	private String lname;
 	@Column
 	private String email;
+	@Column
+	private String address;
 	@Column
 	private String password;
 	
@@ -39,32 +43,50 @@ public class Trainer {
 		super();
 		this.home_gym = home_gym;
 	}
-	public Trainer(String name, String email, String password) {
+	
+	
+	public Trainer(int trainer_id, String firstname, String lastname,
+			String email, String address, String password) {
 		super();
-		this.name = name;
+		this.trainer_id = trainer_id;
+		this.fname = firstname;
+		this.lname = lastname;
 		this.email = email;
+		this.address = address;
 		this.password = password;
 	}
-	public Trainer(String name, String email, String password, int trainer_id) {
+	public Trainer(String firstname, String lastname, String email,
+			String address, String password) {
 		super();
-		this.name = name;
+		this.fname = firstname;
+		this.lname = lastname;
 		this.email = email;
+		this.address = address;
 		this.password = password;
+	}
+	public int getTrainer_id() {
+		return trainer_id;
+	}
+	public void setTrainer_id(int trainer_id) {
 		this.trainer_id = trainer_id;
 	}
-	
-	public Trainer(String name, String email, String password, Gym home_gym) {
-		super();
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.home_gym = home_gym;
+	public String getFirstname() {
+		return fname;
 	}
-	public String getName() {
-		return name;
+	public void setFirstname(String firstname) {
+		this.fname = firstname;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public String getLastname() {
+		return lname;
+	}
+	public void setLastname(String lastname) {
+		this.lname = lastname;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public String getEmail() {
 		return email;
@@ -78,17 +100,19 @@ public class Trainer {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getId() {
-		return trainer_id;
-	}
-	public void setId(int trainer_id) {
-		this.trainer_id = trainer_id;
-	}
 	public Gym getHome_gym() {
 		return home_gym;
 	}
 	public void setHome_gym(Gym home_gym) {
 		this.home_gym = home_gym;
 	}
+	@Override
+	public String toString() {
+		return "Trainer [trainer_id=" + trainer_id + ", fname=" + fname
+				+ ", lname=" + lname + ", email=" + email + ", address="
+				+ address + ", password=" + password + ", home_gym=" + home_gym
+				+ "]";
+	}
+	
 	
 }
