@@ -15,9 +15,9 @@ public class HibernateUtil {
 			.setProperty("hibernate.connection.url", props[1])
 			.setProperty("hibernate.connection.username", props[2])
 			.setProperty("hibernate.connection.password", props[3])
-			.setProperty("hibernate.connection.pool_size", "2")
+			.setProperty("hibernate.connection.pool_size", "1")
+			.setProperty("show_sql", "true")
 			.configure().buildSessionFactory();
-			
 	
 	public static Session getSession(){
 		
