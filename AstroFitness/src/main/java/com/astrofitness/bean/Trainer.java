@@ -26,9 +26,9 @@ public class Trainer {
 	@Column
 	private String lname;
 	@Column
-	private String address;
-	@Column
 	private String email;
+	@Column
+	private String address;
 	@Column
 	private String password;
 	
@@ -79,6 +79,7 @@ public class Trainer {
 	}
 	public void setLname(String lname) {
 		this.lname = lname;
+
 	}
 	public String getAddress() {
 		return address;
@@ -104,6 +105,14 @@ public class Trainer {
 	public void setHome_gym(Gym home_gym) {
 		this.home_gym = home_gym;
 	}
+	@Override
+	public String toString() {
+		return "Trainer [trainer_id=" + trainer_id + ", fname=" + fname
+				+ ", lname=" + lname + ", email=" + email + ", address="
+				+ address + ", password=" + password + ", home_gym=" + home_gym
+				+ "]";
+	}
+	
 	
 	
 	
