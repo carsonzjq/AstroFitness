@@ -10,6 +10,7 @@ public class HibernateUtil {
 //	private static SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 	private static String props[] = System.getenv("AstroDB").split(";");
 
+	@SuppressWarnings("deprecation")
 	private static SessionFactory sessionFactory = new Configuration()
 			.setProperty("hibernate.dialect", props[0])
 			.setProperty("hibernate.connection.url", props[1])
