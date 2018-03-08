@@ -1,7 +1,6 @@
 package com.astrofitness.bean;
 
-import java.util.Set;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,57 +9,67 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CLIENT")
+@Table(name = "CLIENT")
 public class Client {
-	
+
 	@Id
 	@Column
-	@SequenceGenerator(sequenceName="CLIENT_SEQ", name="CLIENT_SEQ")
-	@GeneratedValue(generator="CLIENT_SEQ", strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(sequenceName = "CLIENT_SEQ", name = "CLIENT_SEQ")
+	@GeneratedValue(generator = "CLIENT_SEQ", strategy = GenerationType.SEQUENCE)
 	private int client_id;
 	@Column
-	private String name;
+	private String fname;
+	@Column
+	private String lname;
+	@Column
+	private String address;
 	@Column
 	private String email;
 	@Column
 	private String password;
-	
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="Gym", 
-				joinColumns=@JoinColumn(name="CLIENT_ID"), //reference id of class we are in
-				inverseJoinColumns=@JoinColumn(name="GYM_ID"))
-	private Set<Gym> home_gyms;
-	
+
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "Client_Home")
+	private Gym client_gym;
+
 	public Client() {
 		super();
 	}
-	public Client(String name, String email, String password) {
+
+	public Client(String fname, String lname, String address, String email,
+			String password, Gym client_gym) {
 		super();
-		this.name = name;
+		this.fname = fname;
+		this.lname = lname;
+		this.address = address;
 		this.email = email;
 		this.password = password;
-		
-	}
-	public Client(String name, String email, String password, Set<Gym> home_gyms) {
-		super();
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.home_gyms = home_gyms;
+		this.client_gym = client_gym;
 	}
 
-	public Client(int id, String name, String email, String password, Set<Gym> home_gyms) {
+	public Client(int client_id, String fname, String lname, String address,
+			String email, String password, Gym client_gym) {
 		super();
-		this.client_id = id;
-		this.name = name;
+		this.client_id = client_id;
+		this.fname = fname;
+		this.lname = lname;
+		this.address = address;
 		this.email = email;
 		this.password = password;
-		this.home_gyms = home_gyms;
+		this.client_gym = client_gym;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public int getId() {
@@ -71,12 +80,20 @@ public class Client {
 		this.client_id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFname() {
+		return fname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
+	public String getLname() {
+		return lname;
+	}
+
+	public void setLname(String lname) {
+		this.lname = lname;
 	}
 
 	public String getEmail() {
@@ -95,13 +112,20 @@ public class Client {
 		this.password = password;
 	}
 
-	public Set<Gym> getHome_gyms() {
-		return home_gyms;
+	public Gym getHome_gyms() {
+		return client_gym;
 	}
 
-	public void setHome_gyms(Set<Gym> home_gyms) {
-		this.home_gyms = home_gyms;
+	public void setHome_gyms(Gym home_gyms) {
+		this.client_gym = home_gyms;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Client [client_id=" + client_id + ", fname=" + fname
+				+ ", lname=" + lname + ", address=" + address + ", email="
+				+ email + ", password=" + password + "]";
+	}
+
 	
 }

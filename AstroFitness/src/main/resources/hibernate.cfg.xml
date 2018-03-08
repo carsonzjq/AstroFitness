@@ -15,6 +15,7 @@
 			
 		<mapping class="com.astrofitness.bean.Trainer"/>
 		<mapping class="com.astrofitness.bean.Gym"/>
+		<mapping class="com.astrofitness.bean.Client"/>
 	<!-- 	<mapping class="com.astrofitness.bean.Client"/> -->
 	
 	</session-factory>
