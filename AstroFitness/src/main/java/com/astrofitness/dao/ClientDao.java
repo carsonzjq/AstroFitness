@@ -8,14 +8,15 @@ import com.astrofitness.bean.Client;
 import com.astrofitness.util.HibernateUtil;
 
 public class ClientDao {
+
 	public Integer insertClient(Client client) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
-		Integer tid = null;
+		Integer cid = null;
 		
 		try{
 			tx = session.beginTransaction();
-			tid = (Integer)session.save(client);
+			cid = (Integer)session.save(client);
 			tx.commit();
 			
 		}catch(HibernateException e){
@@ -25,7 +26,10 @@ public class ClientDao {
 			e.printStackTrace();
 		}finally{
 			session.close();
-		}		
-		return tid;
-	}	
+		}
+		
+		return cid;
+		
+	}
+
 }
