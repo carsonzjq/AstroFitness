@@ -3,6 +3,7 @@ package com.astrofitness.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -33,7 +34,7 @@ public class GymDao {
 			session.close();
 		}		
 		return tid;
-	}	
+	}
 	
 	public List<Trainer> getAllTrainersFromGym(Gym gym) {
 		List<Trainer> trainers = new ArrayList<Trainer>();
@@ -58,6 +59,63 @@ public class GymDao {
 			session.close();
 		}
 		return trainers;
+	}
+	
+	public List<Gym> getAllGym(){
+		List<Gym> gyms= new ArrayList<>();
+		
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		
+		try{
+			
+			tx = session.beginTransaction();
+
+			gyms = session.createQuery("FROM Gym").list();
+			
+			for(Gym g: gyms){
+				g.setTrainers(null);
+				g.setClients(null);
+			}
+
+			
+		}catch(HibernateException e){
+			if(tx!=null){
+				tx.rollback();
+			}
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		
+		return gyms;
+	}
+	
+	public Gym getGymById(int id){
+		
+		Gym gym = null;
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		
+		try{
+			
+			tx = session.beginTransaction();
+
+			gym = (Gym) session.createQuery("FROM Gym WHERE GYM_ID = :gymId")
+					.setParameter("gymId", id).uniqueResult();
+
+			
+		}catch(HibernateException e){
+			if(tx!=null){
+				tx.rollback();
+			}
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return gym;
+		
 	}
 	
 }
