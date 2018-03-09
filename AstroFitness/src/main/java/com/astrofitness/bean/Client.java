@@ -44,6 +44,7 @@ public class Client {
 	public Client(String fname, String lname, String address, String email,
 			String password, Gym client_gym) {
 		super();
+
 		this.fname = fname;
 		this.lname = lname;
 		this.address = address;

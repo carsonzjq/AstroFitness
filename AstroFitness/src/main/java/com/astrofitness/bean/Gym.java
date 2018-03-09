@@ -34,9 +34,18 @@ public class Gym {
 	public Gym() {
 		super();
 	}
+	public Gym(int gym_id) {
+		super();
+		this.gym_id = gym_id;
+	}
 	public Gym(String name) {
 		super();
 		this.name = name;
+	}
+	public Gym(String name, String address) {
+		super();
+		this.name = name;
+		this.address = address;
 	}
 	public Gym(String name, String address, List<Trainer> trainers) {
 		super();
