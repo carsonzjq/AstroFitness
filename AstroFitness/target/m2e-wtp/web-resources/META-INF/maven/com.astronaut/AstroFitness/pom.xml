@@ -22,7 +22,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 	<dependencies>
 	<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
