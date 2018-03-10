@@ -19,7 +19,6 @@ public class HibernateUtil {
 			.setProperty("hibernate.connection.password", props[4])
 			.setProperty("hibernate.connection.pool_size", "2")
 			.configure().buildSessionFactory();
-			
 	
 	public static Session getSession(){
 		return sessionFactory.openSession();
