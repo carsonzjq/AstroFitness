@@ -12,7 +12,6 @@ public class HibernateUtil {
 	
 
 	private static SessionFactory sessionFactory = new Configuration()
-
 			.setProperty("hibernate.connection.driver_class", props[0])
 			.setProperty("hibernate.dialect", props[1])
 			.setProperty("hibernate.connection.url", props[2])
