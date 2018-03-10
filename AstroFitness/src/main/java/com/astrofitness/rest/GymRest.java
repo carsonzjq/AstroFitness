@@ -25,7 +25,7 @@ public class GymRest {
 	public List<Gym> getAllGym(){
 		GymDao dao = new GymDao();
 		return dao.getAllGym();
-//		return new ArrayList<Gym>();
+//		
 	}
 
 }

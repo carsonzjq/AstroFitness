@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+import com.astrofitness.bean.Client;
 import com.astrofitness.bean.Gym;
 import com.astrofitness.bean.Trainer;
 import com.astrofitness.util.HibernateUtil;
@@ -81,6 +82,32 @@ public class TrainerDao {
 		
 		return tid;
 	}
+
+	public Trainer authenticate(String email, String password) {
+		Session session = HibernateUtil.getSession();
+		
+		Transaction tx = null;
+		Trainer trainer = null;
+		try {
+			tx = session.beginTransaction();
+			String hql = "FROM Trainer where email='" + email + "' and password ='" + password + "'";
+			trainer = (Trainer) session.createQuery(hql).uniqueResult();
+			if (trainer==null)
+				return null;
+			trainer.setHome_gym(null);
+			trainer.setPassword(null);
+	
+		} catch (HibernateException e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return trainer;
+	}
+	
 	
 
 	

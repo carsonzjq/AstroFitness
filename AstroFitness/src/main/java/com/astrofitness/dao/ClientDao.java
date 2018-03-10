@@ -34,7 +34,7 @@ public class ClientDao {
 
 	public Client authenticate(String email, String password) {
 		Session session = HibernateUtil.getSession();
-		;
+		
 		Transaction tx = null;
 		Client client = null;
 		try {
@@ -42,6 +42,8 @@ public class ClientDao {
 			String hql = "FROM Client where email='" + email + "' and password ='" + password + "'";
 			System.out.println(hql);
 			client = (Client) session.createQuery(hql).uniqueResult();
+			if (client==null)
+				return null;
 			client.setClient_gym(null);
 			client.setPassword(null);
 			System.out.println(client);

@@ -37,7 +37,6 @@ public class ClientRest {
 		System.out.println(client);
 		ClientDao dao = new ClientDao();
 		return dao.authenticate(client.getEmail(), client.getPassword());
-				
 	}
 
 }
