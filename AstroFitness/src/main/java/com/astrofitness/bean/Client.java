@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -38,7 +37,7 @@ public class Client {
 	private Gym client_gym;
 
 	public Client() {
-		super();
+	    super();	 
 	}
 
 	public Client(String fname, String lname, String address, String email,

@@ -1,6 +1,7 @@
 package com.astrofitness.rest;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -28,5 +29,16 @@ public class ClientRest {
 		return "Success";
 	}
 	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/authenticate")
+	public Client getClientAccount(Client client ) {
+		System.out.println(client);
+		ClientDao dao = new ClientDao();
+		return new Client();
+				//dao.authenticate(client.getEmail(), client.getPassword());
+				
+	}
 
 }
