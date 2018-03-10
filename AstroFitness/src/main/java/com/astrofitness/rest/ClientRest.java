@@ -1,8 +1,10 @@
 package com.astrofitness.rest;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -35,6 +37,14 @@ public class ClientRest {
 		System.out.println(client);
 		ClientDao dao = new ClientDao();
 		return dao.authenticate(client.getEmail(), client.getPassword());
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/getByEmail/{email}")
+	public Client getClientByEmail(@PathParam("email")String email){
+		ClientDao dao = new ClientDao();
+		return dao.getClientByEmail(email);
 	}
 
 }

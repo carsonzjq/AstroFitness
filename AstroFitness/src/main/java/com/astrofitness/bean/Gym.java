@@ -132,8 +132,10 @@ public class Gym {
 	@Override
 	public String toString() {
 		return "Gym [gym_id=" + gym_id + ", name=" + name + ", address="
-				+ address + "]";
+				+ address + ", trainers=" + trainers + ", clients=" + clients
+				+ "]";
 	}
+	
 	
 	
 }
