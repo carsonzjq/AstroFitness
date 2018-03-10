@@ -3,52 +3,54 @@ package com.astrofitness.dao;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
-
 import com.astrofitness.bean.Client;
 import com.astrofitness.util.HibernateUtil;
 
 public class ClientDao {
-	private Session session;
-	private Transaction tx;
+
 	public Integer insertClient(Client client) {
-			session = HibernateUtil.getSession();
-		tx = null;
+		Session session = HibernateUtil.getSession();
+		;
+		Transaction tx = null;
 		Integer cid = null;
-		
-		try{
+
+		try {
 			tx = session.beginTransaction();
-			cid = (Integer)session.save(client);
+			cid = (Integer) session.save(client);
 			tx.commit();
-			
-		}catch(HibernateException e){
-			if(tx!=null){
+
+		} catch (HibernateException e) {
+			if (tx != null) {
 				tx.rollback();
 			}
 			e.printStackTrace();
-		}finally{
+		} finally {
 			session.close();
 		}
-		
+
 		return cid;
-		
+
 	}
-	public Client authenticate(String email,String password) {
-		session =null;
-		tx=null;
-		Client client=null;
+
+	public Client authenticate(String email, String password) {
+		Session session = HibernateUtil.getSession();
+		;
+		Transaction tx = null;
+		Client client = null;
 		try {
-			tx=session.beginTransaction();
-			client =(Client)session.createCriteria(Client.class)
-					.add(Restrictions.sqlRestriction("email="+email+"and password="
-			          +password)).uniqueResult();
-			
-		}catch(HibernateException e){
-			if(tx!=null){
+			tx = session.beginTransaction();
+			String hql = "FROM Client where email='" + email + "' and password ='" + password + "'";
+			System.out.println(hql);
+			client = (Client) session.createQuery(hql).uniqueResult();
+			client.setClient_gym(null);
+			client.setPassword(null);
+			System.out.println(client);
+		} catch (HibernateException e) {
+			if (tx != null) {
 				tx.rollback();
 			}
-			e.printStackTrace();}
-		finally {
+			e.printStackTrace();
+		} finally {
 			session.close();
 		}
 		return client;

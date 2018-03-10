@@ -36,8 +36,7 @@ public class ClientRest {
 	public Client getClientAccount(Client client ) {
 		System.out.println(client);
 		ClientDao dao = new ClientDao();
-		return new Client();
-				//dao.authenticate(client.getEmail(), client.getPassword());
+		return dao.authenticate(client.getEmail(), client.getPassword());
 				
 	}
 
