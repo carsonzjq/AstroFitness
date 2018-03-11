@@ -8,8 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.astrofitness.bean.Forum;
-import com.astrofitness.bean.Gym;
-import com.astrofitness.bean.Trainer;
 import com.astrofitness.util.HibernateUtil;
 
 public class ForumDao {
@@ -45,7 +43,6 @@ public class ForumDao {
 			tx = session.beginTransaction();
 
 			records = session.createQuery("FROM Forum").list();
-
 			
 		}catch(HibernateException e){
 			if(tx!=null){
