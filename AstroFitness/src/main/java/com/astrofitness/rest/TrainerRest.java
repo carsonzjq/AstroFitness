@@ -27,5 +27,16 @@ public class TrainerRest {
 		return "Success";
 	}
 	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/authenticate")
+	public Trainer getTrainerAccount(Trainer trainer) {
+		System.out.println(trainer);
+		TrainerDao dao = new TrainerDao();
+		return dao.authenticate(trainer.getEmail(), trainer.getPassword());
+				
+	}
+	
 
 }
