@@ -1,8 +1,5 @@
 package com.astrofitness.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -97,6 +94,31 @@ public class TrainerDao {
 			trainer.setHome_gym(null);
 			trainer.setPassword(null);
 
+		} catch (HibernateException e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return trainer;
+	}
+
+	public Trainer getTrainerByEmail(String email) {
+		Session session = HibernateUtil.getSession();
+
+		Transaction tx = null;
+		Trainer trainer = null;
+		try {
+			tx = session.beginTransaction();
+			String hql = "FROM Trainer where email='" + email + "'";
+			trainer = (Trainer) session.createQuery(hql).uniqueResult();
+			if (trainer == null)
+				return null;
+			if (trainer.getHome_gym() != null)
+				trainer.getHome_gym().setTrainers(null);
+			trainer.setPassword(null);
 		} catch (HibernateException e) {
 			if (tx != null) {
 				tx.rollback();

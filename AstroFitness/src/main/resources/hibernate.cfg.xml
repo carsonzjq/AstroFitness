@@ -14,6 +14,7 @@
 		<mapping class="com.astrofitness.bean.Gym"/>
 		<mapping class="com.astrofitness.bean.Client"/>
 	 	<mapping class="com.astrofitness.bean.Forum"/>
+	 	<mapping class="com.astrofitness.bean.Manager"/>
 	 		
 	</session-factory>
 </hibernate-configuration>

@@ -22,7 +22,7 @@ public class ClientRest {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Path("/post/newClient")
 	public String insertClient(Client client) {
-		System.out.println(client);
+//		System.out.println(client);
 
 		ClientDao dao = new ClientDao();
 		dao.insertClient(client);
@@ -34,7 +34,7 @@ public class ClientRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/authenticate")
 	public Client getClientAccount(Client client) {
-		System.out.println(client);
+//		System.out.println(client);
 		ClientDao dao = new ClientDao();
 		return dao.authenticate(client.getEmail(), client.getPassword());
 	}
