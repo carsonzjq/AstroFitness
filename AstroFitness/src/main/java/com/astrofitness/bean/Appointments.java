@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Appointments {
 	@Id
 	@Column
-	@SequenceGenerator(sequenceName="APOINTMENTS_SEQ", name="APPOINTMENTS_SEQ")
+	@SequenceGenerator(sequenceName="APPOINTMENTS_SEQ", name="APPOINTMENTS_SEQ")
 	@GeneratedValue(generator="APPOINTMENTS_SEQ", strategy=GenerationType.SEQUENCE)
 	private int appointment_id;
 	@Column
