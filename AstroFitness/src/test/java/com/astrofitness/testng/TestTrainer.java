@@ -8,6 +8,7 @@ import com.astrofitness.bean.Trainer;
 import com.astrofitness.dao.TrainerDao;
 
 public class TestTrainer {
+	//insert Trainer
 	  @Test(groups={"trainerDao"}, enabled = false,priority=2)
 	  public void insertTrainer() {
 		  TrainerDao tDao = new TrainerDao();
