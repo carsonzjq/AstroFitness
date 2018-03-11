@@ -2,7 +2,6 @@ package com.astrofitness.testng;
 
 import static com.astrofitness.service.FormatForumDateTime.getDayAndTime;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
