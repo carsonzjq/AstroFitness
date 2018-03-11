@@ -13,7 +13,7 @@ import com.astrofitness.bean.Forum;
 import com.astrofitness.dao.ForumDao;
 @Path("/forum")
 public class ForumRest {
-
+//please merge
 		
 		public ForumRest(){}
 		

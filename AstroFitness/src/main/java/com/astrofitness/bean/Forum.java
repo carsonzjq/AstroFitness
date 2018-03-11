@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "FORUM")
 public class Forum {
-	
+	//merge
 	@Id
 	@Column
 	@SequenceGenerator(sequenceName="FORUM_SEQ", name="FORUM_SEQ")
