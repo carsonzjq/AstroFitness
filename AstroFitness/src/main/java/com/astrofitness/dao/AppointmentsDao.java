@@ -35,7 +35,7 @@ public class AppointmentsDao {
 		
 	}
 	
-	public List<Appointments> getAllForum(){
+	public List<Appointments> getAllAppointments(){
 		List<Appointments> appointments = new ArrayList<>();
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
@@ -57,10 +57,4 @@ public class AppointmentsDao {
 		}
 		return appointments;
 	}
-	
-	public static void main(String[] args) {
-		AppointmentsDao dao = new AppointmentsDao();
-		dao.insertAppointment(new Appointments(123, 234, 5));	
-	}
-
 }
