@@ -13,13 +13,13 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Trainer")
+@Table(name = "Trainer")
 public class Trainer {
-	
+
 	@Id
 	@Column
-	@SequenceGenerator(sequenceName="TRAINER_SEQ", name="TRAINER_SEQ")
-	@GeneratedValue(generator="TRAINER_SEQ", strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(sequenceName = "TRAINER_SEQ", name = "TRAINER_SEQ")
+	@GeneratedValue(generator = "TRAINER_SEQ", strategy = GenerationType.SEQUENCE)
 	private int trainer_id;
 	@Column
 	private String fname;
@@ -31,17 +31,17 @@ public class Trainer {
 	private String address;
 	@Column
 	private String password;
-	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="TRAINER_HOME")
+
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "TRAINER_HOME")
 	private Gym home_gym;
-	
+
 	public Trainer() {
 		super();
 	}
 
-	public Trainer(String fname, String lname, String address, String email, String password,
-			Gym home_gym) {
+	public Trainer(String fname, String lname, String address, String email,
+			String password, Gym home_gym) {
 		super();
 		this.fname = fname;
 		this.lname = lname;
@@ -49,10 +49,10 @@ public class Trainer {
 		this.email = email;
 		this.password = password;
 		this.home_gym = home_gym;
-	}	
-		
-	public Trainer(int trainer_id, String fname, String lname, String address, String email, String password,
-			Gym home_gym) {
+	}
+
+	public Trainer(int trainer_id, String fname, String lname, String address,
+			String email, String password, Gym home_gym) {
 		super();
 		this.trainer_id = trainer_id;
 		this.fname = fname;
@@ -62,49 +62,64 @@ public class Trainer {
 		this.password = password;
 		this.home_gym = home_gym;
 	}
+
 	public int getTrainer_id() {
 		return trainer_id;
 	}
+
 	public void setTrainer_id(int trainer_id) {
 		this.trainer_id = trainer_id;
 	}
+
 	public String getFname() {
 		return fname;
 	}
+
 	public void setFname(String fname) {
 		this.fname = fname;
 	}
+
 	public String getLname() {
 		return lname;
 	}
+
 	public void setLname(String lname) {
 		this.lname = lname;
 
 	}
+
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public Gym getHome_gym() {
 		return home_gym;
 	}
+
 	public void setHome_gym(Gym home_gym) {
 		this.home_gym = home_gym;
 	}
+
 	@Override
 	public String toString() {
 		return "Trainer [trainer_id=" + trainer_id + ", fname=" + fname
@@ -112,8 +127,5 @@ public class Trainer {
 				+ address + ", password=" + password + ", home_gym=" + home_gym
 				+ "]";
 	}
-	
-	
-	
-	
+
 }

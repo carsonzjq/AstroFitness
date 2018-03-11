@@ -1,8 +1,10 @@
 package com.astrofitness.rest;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -21,7 +23,7 @@ public class TrainerRest {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Path("/post/newTrainer")
 	public String insertTrainer(Trainer trainer){
-		System.out.println(trainer);		
+//		System.out.println(trainer);		
 		TrainerDao dao = new TrainerDao();
 		dao.insertTrainer(trainer);
 		return "Success";
@@ -32,10 +34,18 @@ public class TrainerRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/authenticate")
 	public Trainer getTrainerAccount(Trainer trainer) {
-		System.out.println(trainer);
+//		System.out.println(trainer);
 		TrainerDao dao = new TrainerDao();
 		return dao.authenticate(trainer.getEmail(), trainer.getPassword());
 				
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/getByEmail/{email}")
+	public Trainer getTrainerByEmail(@PathParam("email")String email){
+		TrainerDao dao = new TrainerDao();
+		return dao.getTrainerByEmail(email);
 	}
 	
 
