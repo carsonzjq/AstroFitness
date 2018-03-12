@@ -6,7 +6,6 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import com.astrofitness.bean.Client;
-import com.astrofitness.bean.Trainer;
 import com.astrofitness.util.HibernateUtil;
 
 public class ClientDao {
@@ -34,6 +33,7 @@ public class ClientDao {
 
 	}
 	
+	//authentication that returns a boolean
 	public boolean logIn(String email, String password) {
 		Client client = null;
 		Session session = HibernateUtil.getSession();
@@ -64,7 +64,8 @@ public class ClientDao {
 		}
 		return false;
 	}
-
+	
+	//same as login but returns a Client object
 	public Client authenticate(String email, String password) {
 		Session session = HibernateUtil.getSession();
 
@@ -101,7 +102,8 @@ public class ClientDao {
 			client = (Client) session.createQuery(hql).uniqueResult();
 			if (client == null)
 				return null;
-			client.getClient_gym().setClients(null);
+			client.setClient_gym(null);
+//			client.getClient_gym().setClients(null);
 			client.setPassword(null);
 		} catch (HibernateException e) {
 			if (tx != null) {
