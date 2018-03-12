@@ -17,29 +17,33 @@ public class Appointments {
 	@GeneratedValue(generator="APPOINTMENTS_SEQ", strategy=GenerationType.SEQUENCE)
 	private int appointment_id;
 	@Column
-	private int client_id;
+	private String client_name;
 	@Column
-	private int trainer_id;
+	private String trainer_name;
 	@Column
-	private int hour;	//sessions are 1 hour long (between 9am to 8pm)
+	private int hour;
+	@Column
+	private String day;	
 	
 	public Appointments() {
 		super();
 	}
-	
-	public Appointments(int client_id, int trainer_id, int hour) {
-		super();
-		this.client_id = client_id;
-		this.trainer_id = trainer_id;
-		this.hour = hour;
-	}
-	
-	public Appointments(int appointment_id, int client_id, int trainer_id, int hour) {
+
+	public Appointments(int appointment_id, String client_name, String trainer_name, int hour, String day) {
 		super();
 		this.appointment_id = appointment_id;
-		this.client_id = client_id;
-		this.trainer_id = trainer_id;
+		this.client_name = client_name;
+		this.trainer_name = trainer_name;
 		this.hour = hour;
+		this.day = day;
+	}
+	
+	public Appointments(String client_name, String trainer_name, int hour, String day) {
+		super();
+		this.client_name = client_name;
+		this.trainer_name = trainer_name;
+		this.hour = hour;
+		this.day = day;
 	}
 
 	public int getAppointment_id() {
@@ -50,20 +54,20 @@ public class Appointments {
 		this.appointment_id = appointment_id;
 	}
 
-	public int getClient_id() {
-		return client_id;
+	public String getClient_name() {
+		return client_name;
 	}
 
-	public void setClient_id(int client_id) {
-		this.client_id = client_id;
+	public void setClient_name(String client_name) {
+		this.client_name = client_name;
 	}
 
-	public int getTrainer_id() {
-		return trainer_id;
+	public String getTrainer_name() {
+		return trainer_name;
 	}
 
-	public void setTrainer_id(int trainer_id) {
-		this.trainer_id = trainer_id;
+	public void setTrainer_name(String trainer_name) {
+		this.trainer_name = trainer_name;
 	}
 
 	public int getHour() {
@@ -74,9 +78,17 @@ public class Appointments {
 		this.hour = hour;
 	}
 
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
 	@Override
 	public String toString() {
-		return "Appointments [appointment_id=" + appointment_id + ", client_id=" + client_id + ", trainer_id="
-				+ trainer_id + ", hour=" + hour + "]";
+		return "Appointments [appointment_id=" + appointment_id + ", client_name=" + client_name + ", trainer_name="
+				+ trainer_name + ", hour=" + hour + ", day=" + day + "]";
 	}
 }

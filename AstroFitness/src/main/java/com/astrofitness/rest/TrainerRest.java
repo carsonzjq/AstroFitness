@@ -1,5 +1,7 @@
 package com.astrofitness.rest;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -8,7 +10,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.astrofitness.bean.Gym;
 import com.astrofitness.bean.Trainer;
+import com.astrofitness.dao.GymDao;
 import com.astrofitness.dao.TrainerDao;
 
 
@@ -46,6 +50,14 @@ public class TrainerRest {
 	public Trainer getTrainerByEmail(@PathParam("email")String email){
 		TrainerDao dao = new TrainerDao();
 		return dao.getTrainerByEmail(email);
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/get/all/{gym}")
+	public List<Trainer> getAllTrainers(@PathParam("gym")Gym gym){
+		GymDao dao = new GymDao();
+		return dao.getAllTrainersFromGym(gym);
 	}
 	
 
