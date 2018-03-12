@@ -44,7 +44,7 @@ public class AppointmentsDao {
 			
 			tx = session.beginTransaction();
 
-			appointments = session.createQuery("FROM APPOINTMENTS").list();
+			appointments = session.createQuery("FROM Appointments").list();
 
 			
 		}catch(HibernateException e){
@@ -57,4 +57,10 @@ public class AppointmentsDao {
 		}
 		return appointments;
 	}
+	
+//	public static void main(String[] args) {
+//		AppointmentsDao dao = new AppointmentsDao();
+//		List<Appointments> appointments = dao.getAllAppointments();
+//		System.out.println(appointments);
+//	}
 }

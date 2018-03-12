@@ -1,5 +1,7 @@
 package com.astrofitness.dao;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -130,5 +132,4 @@ public class TrainerDao {
 		}
 		return trainer;
 	}
-
 }
