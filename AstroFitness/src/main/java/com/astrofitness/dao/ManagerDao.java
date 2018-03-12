@@ -46,8 +46,7 @@ public class ManagerDao {
 			manager = (Manager) session.createQuery(hql).uniqueResult();
 			if (manager == null)
 				return null;
-			manager.getGym().setClients(null);
-			manager.getGym().setTrainers(null);
+			manager.setGym(null);
 			manager.setPassword(null);
 		} catch (HibernateException e) {
 			if (tx != null) {

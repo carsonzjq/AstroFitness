@@ -116,8 +116,9 @@ public class TrainerDao {
 			trainer = (Trainer) session.createQuery(hql).uniqueResult();
 			if (trainer == null)
 				return null;
-			if (trainer.getHome_gym() != null)
-				trainer.getHome_gym().setTrainers(null);
+//			if (trainer.getHome_gym() != null)
+//				trainer.getHome_gym().setTrainers(null);
+			trainer.setHome_gym(null);
 			trainer.setPassword(null);
 		} catch (HibernateException e) {
 			if (tx != null) {

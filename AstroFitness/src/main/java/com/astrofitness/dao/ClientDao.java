@@ -102,7 +102,8 @@ public class ClientDao {
 			client = (Client) session.createQuery(hql).uniqueResult();
 			if (client == null)
 				return null;
-			client.getClient_gym().setClients(null);
+			client.setClient_gym(null);
+//			client.getClient_gym().setClients(null);
 			client.setPassword(null);
 		} catch (HibernateException e) {
 			if (tx != null) {
